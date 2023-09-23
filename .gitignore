@@ -21,6 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -40,3 +41,41 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# arquivos e diretórios gerados pelo Angular CLI
+/dist/
+/node_modules/
+/e2e/
+
+# arquivos de compilação TypeScript
+*.js
+*.js.map
+
+# arquivos de configuração do Angular CLI
+.angular-cli.json
+.angular-cli.js
+angular.json
+
+# arquivos de dependências do npm e Yarn
+package-lock.json
+yarn.lock
+
+# arquivos temporários e de compilação
+*.log
+npm-debug.log*
+
+# arquivos de configuração do sistema
+*.iml
+*.DS_Store
+
+# arquivos de cache
+.cache/
+.cachedData/
+
+# arquivos de ambiente local (por exemplo, .env)
+.env
+
+# arquivos de build do Angular Universal
+/dist-server/
+/dist-server.js
+
