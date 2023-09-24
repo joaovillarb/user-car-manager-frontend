@@ -1,0 +1,78 @@
+<section class="reload-button">
+  <button mat-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</section>
+
+<mat-table [dataSource]="carList" class="mat-elevation-z8 car-list">
+
+  <ng-container matColumnDef="carId">
+    <mat-header-cell *matHeaderCellDef class="carId-column">Id</mat-header-cell>
+    <mat-cell *matCellDef="let car" class="carId-column">{{ car.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="year">
+    <mat-header-cell *matHeaderCellDef>Ano</mat-header-cell>
+    <mat-cell *matCellDef="let car">{{ car.year }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="licensePlate">
+    <mat-header-cell *matHeaderCellDef>Placa</mat-header-cell>
+    <mat-cell *matCellDef="let car">{{ car.licensePlate }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="model">
+    <mat-header-cell *matHeaderCellDef>Modelo</mat-header-cell>
+    <mat-cell *matCellDef="let car">{{ car.model }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="color">
+    <mat-header-cell *matHeaderCellDef>Cor</mat-header-cell>
+    <mat-cell *matCellDef="let car">{{ car.color }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="usage">
+    <mat-header-cell *matHeaderCellDef>Usos</mat-header-cell>
+    <mat-cell *matCellDef="let car">{{ car.usageCount }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef class="status-column">Status</mat-header-cell>
+    <mat-cell class="status-column" *matCellDef="let car" [ngClass]="car.active ? 'active-car' : 'inactive-car'">
+      {{ car.active === true ? 'ativo' : 'inativo' }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+    <mat-cell *matCellDef="let car">
+      <button mat-icon-button color="primary" (click)="edit(car)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="delete(car)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button (click)="reactivate(car)">
+        <mat-icon color="primary">restore</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row
+    *matHeaderRowDef="[
+    'carId', 'year', 'licensePlate',
+    'model', 'color', 'usage', 'status', 'actions'
+  ]; sticky: true"
+  />
+
+  <mat-row
+    matRipple
+    *matRowDef="let car; columns: [
+    'carId', 'year', 'licensePlate',
+    'model', 'color', 'usage', 'status', 'actions'
+  ]"
+  />
+
+
+</mat-table>

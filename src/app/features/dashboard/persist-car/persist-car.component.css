@@ -1,0 +1,13 @@
+.car-card {
+  text-align: center;
+}
+
+.car-title {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.car-button {
+  width: 100%;
+  margin-top: 1em;
+}

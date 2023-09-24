@@ -1,1 +1,23 @@
-<p>dashboard works!</p>
+<section class="container">
+
+  <h1 style="text-align: center">Gerenciamento de Carros</h1>
+
+  <section fxLayout="row" fxLayoutGap="30px">
+
+    <button mat-raised-button
+            color="primary"
+            (click)="createNewCar()">
+      Novo
+    </button>
+
+    <button mat-raised-button
+            color="warn"
+            (click)="findById()">
+      Buscar
+    </button>
+
+  </section>
+
+  <app-list-car/>
+
+</section>
