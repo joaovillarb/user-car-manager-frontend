@@ -4,7 +4,7 @@
   </button>
 </section>
 
-<mat-table [dataSource]="accountUserList" class="mat-elevation-z8 user-list">
+<mat-table [dataSource]="accountUserList" class="user-list">
 
   <ng-container matColumnDef="userId">
     <mat-header-cell *matHeaderCellDef class="userId-column">Id</mat-header-cell>
@@ -43,7 +43,7 @@
 
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef class="status-column">Status</mat-header-cell>
-    <mat-cell  class="status-column" *matCellDef="let user" [ngClass]="user.active ? 'active-user' : 'inactive-user'">
+    <mat-cell class="status-column" *matCellDef="let user" [ngClass]="user.active ? 'active-user' : 'inactive-user'">
       {{ user.active === true ? 'ativo' : 'inativo' }}
     </mat-cell>
   </ng-container>

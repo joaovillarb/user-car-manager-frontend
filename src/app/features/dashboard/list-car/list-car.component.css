@@ -13,14 +13,12 @@
 
 .active-car {
   font-weight: bold;
-  background-color: green;
-  color: white;
+  color: green;
 }
 
 .inactive-car {
   font-weight: bold;
-  background-color: red;
-  color: white;
+  color: red;
 }
 
 .carId-column {

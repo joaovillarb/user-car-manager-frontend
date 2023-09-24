@@ -4,18 +4,20 @@ import {LoginComponent} from "./features/login/login.component";
 import {HomeComponent} from "./features/home/home.component";
 import {DashboardComponent} from "./features/dashboard/dashboard.component";
 import {authGuard} from "./core/guard/auth.guard";
+import {AboutComponent} from "./features/dashboard/about/about.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
-    {path: '**', redirectTo: ''},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
+  {path: 'about', component: AboutComponent, canActivate: [authGuard]},
+  {path: '**', redirectTo: ''},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

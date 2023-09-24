@@ -1,0 +1,112 @@
+<section class="base">
+  <mat-card class="container">
+    <mat-list role="list">
+
+      <div mat-subheader>Detalhes Pessoais</div>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>No.</span>
+        <span matListItemLine>{{ accountUser.id }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Primeiro nome:</span>
+        <span matListItemLine>{{ accountUser.firstName }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Último nome:</span>
+        <span matListItemLine>{{ accountUser.lastName }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Email:</span>
+        <span matListItemLine>{{ accountUser.email }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Data de Nascimento:</span>
+        <span matListItemLine>{{ accountUser.birthday }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Login:</span>
+        <span matListItemLine>{{ accountUser.login }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Telefone:</span>
+        <span matListItemLine>{{ accountUser.phone }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Criado em:</span>
+        <span matListItemLine>{{ accountUser.createdAt }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span matListItemTitle>Último login:</span>
+        <span matListItemLine>{{ accountUser.lastLogin }}</span>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+      <div mat-subheader>Carros</div>
+
+      <mat-table [dataSource]="accountUser.cars">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="year">
+          <mat-header-cell *matHeaderCellDef>Ano</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.year }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="licensePlate">
+          <mat-header-cell *matHeaderCellDef>Placa</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.licensePlate }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="model">
+          <mat-header-cell *matHeaderCellDef>Modelo</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.model }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+          <mat-header-cell *matHeaderCellDef>Cor</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.color }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="usageCount">
+          <mat-header-cell *matHeaderCellDef>Usos</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.usageCount }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell *matCellDef="let element" [ngClass]="element.active ? 'active' : 'inactive'">
+            {{ element.active ? 'ativo' : 'inativo' }}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row
+          *matHeaderRowDef="[
+          'id', 'year', 'licensePlate',
+          'model', 'color', 'usageCount', 'status'
+        ];
+        sticky: true"
+        />
+
+        <mat-row
+          matRipple
+          *matRowDef="let car; columns: [
+          'id', 'year', 'licensePlate',
+          'model', 'color', 'usageCount', 'status'
+        ]"
+        />
+      </mat-table>
+
+    </mat-list>
+  </mat-card>
+</section>

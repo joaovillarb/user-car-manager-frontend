@@ -1,22 +1,23 @@
-<section class="container">
-  <h1 style="text-align: center">Gerenciamento de Usuários</h1>
+<section>
+  <mat-card class="container">
+    <h1 style="text-align: center">Gerenciamento de Usuários</h1>
 
-  <section fxLayout="row" fxLayoutGap="30px">
+    <section fxLayout="row" fxLayoutGap="30px">
 
-    <button mat-raised-button
-            color="primary"
-            (click)="createNewUser()">
-      Novo
-    </button>
+      <button mat-raised-button
+              color="primary"
+              (click)="createNewUser()">
+        Novo
+      </button>
 
-    <button mat-raised-button
-            color="warn"
-            (click)="findById()">
-      Buscar
-    </button>
+      <button mat-raised-button
+              color="warn"
+              (click)="findById()">
+        Buscar
+      </button>
 
-  </section>
+    </section>
 
-  <app-list-users/>
-
+    <app-list-users/>
+  </mat-card>
 </section>

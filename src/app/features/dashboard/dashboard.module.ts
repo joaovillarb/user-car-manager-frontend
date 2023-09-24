@@ -16,25 +16,27 @@ import {MatTableModule} from "@angular/material/table";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatRippleModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
     declarations: [DashboardComponent, FindCarComponent, ListCarComponent, PersistCarComponent, AboutComponent],
-    imports: [
-        CommonModule,
-        FlexModule,
-        MatButtonModule,
-        FormsModule,
-        MatCardModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatTabsModule,
-        MatRippleModule,
-        MatIconModule
-    ],
+  imports: [
+    CommonModule,
+    FlexModule,
+    MatButtonModule,
+    FormsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatTabsModule,
+    MatRippleModule,
+    MatIconModule,
+    MatListModule
+  ],
     exports: [DashboardComponent]
 })
 export class DashboardModule {

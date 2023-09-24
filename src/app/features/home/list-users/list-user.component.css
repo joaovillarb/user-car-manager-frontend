@@ -13,14 +13,12 @@
 
 .active-user {
   font-weight: bold;
-  background-color: green;
-  color: white;
+  color: green;
 }
 
 .inactive-user {
   font-weight: bold;
-  background-color: red;
-  color: white;
+  color: red;
 }
 
 .userId-column {
