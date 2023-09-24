@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-import {AccountUser, emptyAccountUser} from "../../shared/model/account-user";
-import {AccountUserService} from "../../core/service/account-user.service";
-import {AlertService} from "../../core/service/alert.service";
-import {NgForm} from '@angular/forms';
-import {emptyCar} from "../../shared/model/car";
-import {catchError} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {PersistUserComponent} from "./persist-user/persist-user.component";
+import {Operation} from "../../shared/model/operation";
+import {emptyAccountUser} from "../../shared/model/account-user";
 
 @Component({
     selector: 'app-home',
@@ -12,37 +10,23 @@ import {catchError} from "rxjs";
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    public accountUser: AccountUser;
-
-    constructor(private accountUserService: AccountUserService,
-                private alertService: AlertService,) {
-        this.accountUser = emptyAccountUser()
+    constructor(public dialog: MatDialog) {
     }
 
-    handleCreateUser(form: NgForm): void {
-        console.log(this.accountUser);
+    openDialog() {
+        const dialogRef = this.dialog.open(PersistUserComponent, {
+            data: {
+                accountUser: emptyAccountUser(),
+                operation: Operation.Create
+            }
+        });
 
-        this.accountUserService
-            .create(this.accountUser)
-            .pipe(
-                catchError(httpError => {
-                    this.alertService.error(httpError.error.message)
-                    throw httpError;
-                })
-            )
-            .subscribe(() => {
-                    this.alertService.success("Usuário cadastrado com sucesso!")
-                    form.resetForm();
-                }
-            );
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 
-    addCar(): void {
-        this.accountUser.cars.push(emptyCar());
+    openDialogFindById() {
+//todo: implementar
     }
-
-    removeCar(index: number): void {
-        this.accountUser.cars.splice(index, 1);
-    }
-
 }

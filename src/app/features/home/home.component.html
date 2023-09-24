@@ -1,85 +1,19 @@
-<mat-card class="home-card">
-    <mat-card-content>
-        <form fxLayout="column" #registrationForm="ngForm" (ngSubmit)="handleCreateUser(registrationForm)">
-            <h2 class="home-title">Cadastro de Pessoa</h2>
+<section class="container">
 
-            <section fxLayoutGap="10px grid">
-                <mat-form-field fxFlex="100/4" appearance="fill">
-                    <mat-label>Primeiro Nome</mat-label>
-                    <input matInput [(ngModel)]="accountUser.firstName" name="firstName" required>
-                </mat-form-field>
+    <section fxLayout="row" fxLayoutGap="30px">
 
-                <mat-form-field fxFlex="100/4" appearance="fill">
-                    <mat-label>Sobrenome</mat-label>
-                    <input matInput [(ngModel)]="accountUser.lastName" name="lastName" required>
-                </mat-form-field>
+        <button mat-raised-button color="primary"
+                (click)="openDialog()">
+            Novo
+        </button>
 
-                <mat-form-field fxFlex="100/4" appearance="fill">
-                    <mat-label>Data de Nascimento</mat-label>
-                    <input matInput type="date" [(ngModel)]="accountUser.birthday" name="birthday" required>
-                </mat-form-field>
-            </section>
+        <button mat-raised-button color="warn"
+                (click)="openDialogFindById()">
+            Buscar
+        </button>
 
-            <section fxLayoutGap="10px grid">
-                <mat-form-field fxFlex="100/2" appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" [(ngModel)]="accountUser.email" name="email" required>
-                </mat-form-field>
+    </section>
 
-                <mat-form-field fxFlex="100/2" appearance="fill">
-                    <mat-label>Telefone</mat-label>
-                    <input matInput [(ngModel)]="accountUser.phone" name="phone" required>
-                </mat-form-field>
-            </section>
+    <app-list-users/>
 
-            <section fxLayoutGap="10px grid">
-                <mat-form-field fxFlex="100/2" appearance="fill">
-                    <mat-label>Login</mat-label>
-                    <input matInput [(ngModel)]="accountUser.login" name="login" required>
-                </mat-form-field>
-
-                <mat-form-field fxFlex="100/3" appearance="fill">
-                    <mat-label>Senha</mat-label>
-                    <input matInput type="password" [(ngModel)]="accountUser.password" name="password" required>
-                </mat-form-field>
-            </section>
-
-            <h2 class="home-title">Carro</h2>
-
-            <div *ngFor="let car of accountUser.cars; let i = index">
-
-
-                <section fxLayoutGap="10px grid">
-                    <mat-form-field fxFlex="100/2" appearance="fill">
-                        <mat-label>Ano do Carro</mat-label>
-                        <input matInput [(ngModel)]="car.year" name="carYear{{i}}" required>
-                    </mat-form-field>
-
-                    <mat-form-field fxFlex="100/2" appearance="fill">
-                        <mat-label>Placa do Carro</mat-label>
-                        <input matInput [(ngModel)]="car.licensePlate" name="carLicense{{i}}" required>
-                    </mat-form-field>
-                </section>
-
-
-                <section fxLayoutGap="10px grid">
-                    <mat-form-field fxFlex="100/2" appearance="fill">
-                        <mat-label>Modelo do Carro</mat-label>
-                        <input matInput [(ngModel)]="car.model" name="carModel{{i}}" required>
-                    </mat-form-field>
-
-                    <mat-form-field fxFlex="100/2" appearance="fill">
-                        <mat-label>Cor do Carro</mat-label>
-                        <input matInput [(ngModel)]="car.color" name="carColor{{i}}" required>
-                    </mat-form-field>
-                </section>
-
-                <button mat-button type="button" color="warn" (click)="removeCar(i)">Remover Carro</button>
-            </div>
-
-            <button mat-button type="button" (click)="addCar()">Adicionar Carro</button>
-
-            <button mat-raised-button color="primary" class="home-button" type="submit">Cadastrar</button>
-        </form>
-    </mat-card-content>
-</mat-card>
+</section>

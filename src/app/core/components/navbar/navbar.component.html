@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z8" fxLayout="row" fxLayoutAlign="space-between center">
   <span>
-    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+    <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        Usuários
+    </button>
   </span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/login" *ngIf="!isAuthenticated()">

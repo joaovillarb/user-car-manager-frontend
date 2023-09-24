@@ -1,13 +1,15 @@
 export interface Car {
-    year: number;
+    year: number | null;
     licensePlate: string;
     model: string;
     color: string;
+    active: boolean | null;
 }
 
 export const emptyCar: () => Car = () => ({
-    year: 0,
+    year: null,
     licensePlate: '',
     model: '',
-    color: ''
+    color: '',
+    active: null
 });

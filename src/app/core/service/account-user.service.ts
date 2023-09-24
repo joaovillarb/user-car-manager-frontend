@@ -11,10 +11,27 @@ export class AccountUserService {
     constructor(private http: HttpClient) {
     }
 
+    public findAll(): Observable<AccountUser[]> {
+        return this.http.get<AccountUser[]>(
+            `${this.baseUrl()}/users`
+        );
+    }
+
     public create(accountUser: AccountUser): Observable<AccountUser> {
         return this.http.post<AccountUser>(
-            'http://localhost:8080/api/users',
+            `${this.baseUrl()}/users`,
             accountUser
         );
+    }
+
+    public update(accountUser: AccountUser): Observable<AccountUser> {
+        return this.http.put<AccountUser>(
+            `${this.baseUrl()}/users/${accountUser.id}`,
+            accountUser
+        );
+    }
+
+    private baseUrl() {
+        return 'http://localhost:8080/api';
     }
 }

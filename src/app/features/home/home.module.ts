@@ -6,10 +6,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexModule} from "@angular/flex-layout";
+import {PersistUserComponent} from './persist-user/persist-user.component';
+import {ListUserComponent} from './list-users/list-user.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatRippleModule} from "@angular/material/core";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [HomeComponent, PersistUserComponent, ListUserComponent],
     imports: [
         CommonModule,
         MatInputModule,
@@ -18,7 +25,12 @@ import {FlexModule} from "@angular/flex-layout";
         MatButtonModule,
         FormsModule,
         ReactiveFormsModule,
-        FlexModule
+        FlexModule,
+        MatTableModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatRippleModule,
+        MatIconModule
     ],
     exports: [HomeComponent],
 })
