@@ -8,6 +8,8 @@ import {NavbarModule} from "./core/components/navbar/navbar.module";
 import {LoginModule} from "./features/login/login.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./core/interceptor/auth-interceptor.service";
+import {HomeModule} from "./features/home/home.module";
+import {DashboardModule} from "./features/dashboard/dashboard.module";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import {AuthInterceptorService} from "./core/interceptor/auth-interceptor.servic
         AppRoutingModule,
         BrowserAnimationsModule,
         NavbarModule,
+        HomeModule,
         LoginModule,
+        DashboardModule,
         HttpClientModule
     ],
     providers: [

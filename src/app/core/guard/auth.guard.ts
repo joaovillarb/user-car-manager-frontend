@@ -7,13 +7,13 @@ export const authGuard: CanActivateFn = (route, state) => {
 
     const service = inject(TokenService);
 
-    if (service.haveAccess()) {
+    if (service.isAuthenticated()) {
         return true;
     }
 
     const router = inject(Router);
     const alertService = inject(AlertService);
     alertService.error("Access Denied");
-    router.navigate(['/login']);
+    router.navigate(['/home']);
     return false;
 };

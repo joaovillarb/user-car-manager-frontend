@@ -10,7 +10,7 @@ export const setAuthorizationToken = (token?: string) => {
 }
 
 export const getAuthorizationToken = (): string => {
-    return getItemStorage(AUTHORIZATION_KEY) || '';
+    return getItemStorage(AUTHORIZATION_KEY) ?? '';
 };
 
 export const hasAuthorizationToken = () => !!getAuthorizationToken();
