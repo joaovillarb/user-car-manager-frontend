@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthenticationRequest} from "../../shared/model/authentication-request";
 import {Observable} from "rxjs";
 import {AuthenticationResponse} from "../../shared/model/authentication-response";
+import {AccountUser} from "../../shared/model/account-user";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,12 @@ export class SecurityService {
     return this.http.post<AuthenticationResponse>(
       `${this.baseUrl}/signin`,
       authenticationRequest
+    );
+  }
+
+  public me(): Observable<AccountUser> {
+    return this.http.get<AccountUser>(
+      `${this.baseUrl}/me`
     );
   }
 }

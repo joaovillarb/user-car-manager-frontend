@@ -1,0 +1,66 @@
+.base {
+  padding: 4em;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  color: black;
+  background: whitesmoke;
+}
+
+mat-list {
+  padding: 0;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+mat-list-item span[matListItemTitle] {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.mat-divider {
+  margin: 20px 0;
+}
+
+.mat-subheader {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-table th, mat-table td {
+  text-align: left;
+  padding: 5px;
+}
+
+.active {
+  font-weight: bold;
+  color: green;
+}
+
+.inactive {
+  font-weight: bold;
+  color: red;
+}
+
