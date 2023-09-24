@@ -1,6 +1,6 @@
 <mat-card class="login-card">
     <mat-card-content>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #loginForm="ngForm" (ngSubmit)="handleLogin()">
             <h2 class="login-title">Log In</h2>
             <mat-form-field class="login-input">
                 <input matInput placeholder="Login" [(ngModel)]="requestLogin.login" name="login" required>
