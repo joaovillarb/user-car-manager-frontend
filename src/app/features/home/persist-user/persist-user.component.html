@@ -1,0 +1,92 @@
+<h2 mat-dialog-title class="home-title">{{operation}} da Pessoa</h2>
+
+<mat-dialog-content class="mat-typography">
+    <mat-card-content>
+        <form fxLayout="column" #registrationForm="ngForm" (ngSubmit)="handleSubmit(registrationForm)">
+
+            <section fxLayoutGap="10px grid">
+                <mat-form-field fxFlex="100/4" appearance="fill">
+                    <mat-label>Primeiro Nome</mat-label>
+                    <input matInput [(ngModel)]="accountUser.firstName" name="firstName" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100/4" appearance="fill">
+                    <mat-label>Sobrenome</mat-label>
+                    <input matInput [(ngModel)]="accountUser.lastName" name="lastName" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100/4" appearance="fill">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput type="date" [(ngModel)]="accountUser.birthday" name="birthday" required>
+                </mat-form-field>
+            </section>
+
+            <section fxLayoutGap="10px grid">
+                <mat-form-field fxFlex="100/2" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" [(ngModel)]="accountUser.email" name="email" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100/2" appearance="fill">
+                    <mat-label>Telefone</mat-label>
+                    <input matInput [(ngModel)]="accountUser.phone" name="phone" required>
+                </mat-form-field>
+            </section>
+
+            <section fxLayoutGap="10px grid">
+                <mat-form-field fxFlex="100/2" appearance="fill">
+                    <mat-label>Login</mat-label>
+                    <input matInput [(ngModel)]="accountUser.login" name="login" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100/3" appearance="fill">
+                    <mat-label>Senha</mat-label>
+                    <input matInput type="password" [(ngModel)]="accountUser.password" name="password" required>
+                </mat-form-field>
+            </section>
+
+            <div *ngIf="operation === Operation.Create">
+
+                <h2 mat-dialog-title>{{operation}} do Carro</h2>
+
+                <div *ngFor="let car of accountUser.cars; let i = index">
+
+                    <section fxLayoutGap="10px grid">
+                        <mat-form-field fxFlex="100/2" appearance="fill">
+                            <mat-label>Ano do Carro</mat-label>
+                            <input matInput [(ngModel)]="car.year" name="carYear{{i}}" required>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="100/2" appearance="fill">
+                            <mat-label>Placa do Carro</mat-label>
+                            <input matInput [(ngModel)]="car.licensePlate" name="carLicense{{i}}" required>
+                        </mat-form-field>
+                    </section>
+
+
+                    <section fxLayoutGap="10px grid">
+                        <mat-form-field fxFlex="100/2" appearance="fill">
+                            <mat-label>Modelo do Carro</mat-label>
+                            <input matInput [(ngModel)]="car.model" name="carModel{{i}}" required>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="100/2" appearance="fill">
+                            <mat-label>Cor do Carro</mat-label>
+                            <input matInput [(ngModel)]="car.color" name="carColor{{i}}" required>
+                        </mat-form-field>
+                    </section>
+
+                    <button mat-button type="button" class="home-button"
+                            color="warn" (click)="removeCar(i)">
+                        Remover Carro
+                    </button>
+                </div>
+
+                <button mat-button type="button" class="home-button" (click)="addCar()">Adicionar Carro</button>
+            </div>
+
+            <button mat-raised-button color="primary" class="home-button"
+                    type="submit">{{ operation === Operation.Create ? 'Cadastrar' : 'Atualizar' }}</button>
+        </form>
+    </mat-card-content>
+</mat-dialog-content>

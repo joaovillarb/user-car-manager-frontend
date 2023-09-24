@@ -1,7 +1,7 @@
 import {Car} from "./car";
 
 export interface AccountUser {
-    id: number;
+    id: number | null;
     firstName: string;
     lastName: string;
     email: string;
@@ -12,10 +12,11 @@ export interface AccountUser {
     cars: Car[];
     lastLogin?: string | null;
     createdAt?: string | null;
+    active: boolean | null;
 }
 
 export const emptyAccountUser: () => AccountUser = () => ({
-    id: 0,
+    id: null,
     firstName: "",
     lastName: "",
     email: "",
@@ -26,4 +27,5 @@ export const emptyAccountUser: () => AccountUser = () => ({
     cars: [],
     lastLogin: null,
     createdAt: null,
+    active: null,
 });

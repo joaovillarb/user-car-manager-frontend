@@ -1,48 +1,30 @@
 import {Component} from '@angular/core';
-import {AccountUser, emptyAccountUser} from "../../shared/model/account-user";
-import {AccountUserService} from "../../core/service/account-user.service";
-import {AlertService} from "../../core/service/alert.service";
-import {NgForm} from '@angular/forms';
-import {emptyCar} from "../../shared/model/car";
-import {catchError} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {PersistUserComponent} from "./persist-user/persist-user.component";
+import {Operation} from "../../shared/model/operation";
+import {emptyAccountUser} from "../../shared/model/account-user";
+import {FindUserComponent} from "./find-user/find-user.component";
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    public accountUser: AccountUser;
 
-    constructor(private accountUserService: AccountUserService,
-                private alertService: AlertService,) {
-        this.accountUser = emptyAccountUser()
-    }
+  constructor(public matDialog: MatDialog) {
+  }
 
-    handleCreateUser(form: NgForm): void {
-        console.log(this.accountUser);
+  createNewUser() {
+    this.matDialog.open(PersistUserComponent, {
+      data: {
+        accountUser: emptyAccountUser(),
+        operation: Operation.Create
+      }
+    });
+  }
 
-        this.accountUserService
-            .create(this.accountUser)
-            .pipe(
-                catchError(httpError => {
-                    this.alertService.error(httpError.error.message)
-                    throw httpError;
-                })
-            )
-            .subscribe(() => {
-                    this.alertService.success("Usuário cadastrado com sucesso!")
-                    form.resetForm();
-                }
-            );
-    }
-
-    addCar(): void {
-        this.accountUser.cars.push(emptyCar());
-    }
-
-    removeCar(index: number): void {
-        this.accountUser.cars.splice(index, 1);
-    }
-
+  findById() {
+    this.matDialog.open(FindUserComponent);
+  }
 }

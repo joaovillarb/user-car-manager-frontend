@@ -15,7 +15,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should persist-user', () => {
     expect(component).toBeTruthy();
   });
 });
