@@ -4,34 +4,51 @@ import {Observable} from "rxjs";
 import {AccountUser} from "../../shared/model/account-user";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AccountUserService {
 
-    constructor(private http: HttpClient) {
-    }
+  private readonly baseUrl = 'http://localhost:8080/api';
 
-    public findAll(): Observable<AccountUser[]> {
-        return this.http.get<AccountUser[]>(
-            `${this.baseUrl()}/users`
-        );
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    public create(accountUser: AccountUser): Observable<AccountUser> {
-        return this.http.post<AccountUser>(
-            `${this.baseUrl()}/users`,
-            accountUser
-        );
-    }
+  public findAll(): Observable<AccountUser[]> {
+    return this.http.get<AccountUser[]>(
+      `${this.baseUrl}/users`
+    );
+  }
 
-    public update(accountUser: AccountUser): Observable<AccountUser> {
-        return this.http.put<AccountUser>(
-            `${this.baseUrl()}/users/${accountUser.id}`,
-            accountUser
-        );
-    }
+  public create(accountUser: AccountUser): Observable<AccountUser> {
+    return this.http.post<AccountUser>(
+      `${this.baseUrl}/users`,
+      accountUser
+    );
+  }
 
-    private baseUrl() {
-        return 'http://localhost:8080/api';
-    }
+  public update(accountUser: AccountUser): Observable<AccountUser> {
+    return this.http.put<AccountUser>(
+      `${this.baseUrl}/users/${accountUser.id}`,
+      accountUser
+    );
+  }
+
+  public remove(userId: number): Observable<any> {
+    return this.http.delete(
+      `${this.baseUrl}/users/${userId}`
+    );
+  }
+
+  public patch(accountUser: AccountUser): Observable<AccountUser> {
+    return this.http.patch<AccountUser>(
+      `${this.baseUrl}/users/${accountUser.id}`,
+      accountUser
+    );
+  }
+
+  public findById(userId: number): Observable<AccountUser> {
+    return this.http.get<AccountUser>(
+      `${this.baseUrl}/users/${userId}`
+    );
+  }
 }

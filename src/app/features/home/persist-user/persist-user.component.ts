@@ -7,76 +7,81 @@ import {catchError} from "rxjs";
 import {emptyCar} from "../../../shared/model/car";
 import {Operation} from "../../../shared/model/operation";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {UserListService} from "../../../shared/service/user-list.service";
 
 export interface DialogData {
-    operation: Operation;
-    accountUser: AccountUser;
+  operation: Operation;
+  accountUser: AccountUser;
 }
 
 @Component({
-    selector: 'app-persist-user',
-    templateUrl: './persist-user.component.html',
-    styleUrls: ['./persist-user.component.css']
+  selector: 'app-persist-user',
+  templateUrl: './persist-user.component.html',
+  styleUrls: ['./persist-user.component.css']
 })
 export class PersistUserComponent {
 
-    public accountUser: AccountUser;
-    public operation?: Operation;
-    protected readonly Operation = Operation;
+  public accountUser: AccountUser;
+  public operation?: Operation;
+  protected readonly Operation = Operation;
 
-    constructor(private accountUserService: AccountUserService,
-                private alertService: AlertService,
-                @Inject(MAT_DIALOG_DATA)
-                private data: DialogData) {
-        this.accountUser = this.data.accountUser;
-        this.operation = this.data.operation;
+  constructor(
+    private accountUserService: AccountUserService,
+    private alertService: AlertService,
+    private userListService: UserListService,
+    @Inject(MAT_DIALOG_DATA) private data: DialogData
+  ) {
+    this.accountUser = this.data.accountUser;
+    this.operation = this.data.operation;
+  }
+
+  public handleSubmit(form: NgForm): void {
+    if (this.operation === Operation.Create) {
+      this.create(form);
+    } else {
+      this.update(form);
     }
+  }
 
-    handleSubmit(form: NgForm): void {
-        if (this.operation === Operation.Create) {
-            this.create(form);
-        } else {
-            this.update(form);
+  public addCar(): void {
+    this.accountUser.cars.push(emptyCar());
+  }
+
+  public removeCar(index: number): void {
+    this.accountUser.cars.splice(index, 1);
+  }
+
+  private create(form: NgForm): void {
+    this.accountUserService
+      .create(this.accountUser)
+      .pipe(
+        catchError(httpError => {
+          this.alertService.error(httpError.error.message)
+          throw httpError;
+        })
+      )
+      .subscribe(() => {
+          this.alertService.success("Usuário cadastrado com sucesso!")
+          form.resetForm();
+          this.userListService.findAll();
         }
-    }
+      );
+  }
 
-    addCar(): void {
-        this.accountUser.cars.push(emptyCar());
-    }
-
-    removeCar(index: number): void {
-        this.accountUser.cars.splice(index, 1);
-    }
-
-    private create(form: NgForm): void {
-        this.accountUserService
-            .create(this.accountUser)
-            .pipe(
-                catchError(httpError => {
-                    this.alertService.error(httpError.error.message)
-                    throw httpError;
-                })
-            )
-            .subscribe(() => {
-                    this.alertService.success("Usuário cadastrado com sucesso!")
-                    form.resetForm();
-                }
-            );
-    }
-
-    private update(form: NgForm): void {
-        this.accountUserService
-            .update(this.accountUser)
-            .pipe(
-                catchError(httpError => {
-                    this.alertService.error(httpError.error.message)
-                    throw httpError;
-                })
-            )
-            .subscribe(() => {
-                    this.alertService.success("Usuário cadastrado com sucesso!")
-                    form.resetForm();
-                }
-            );
-    }
+  private update(form: NgForm): void {
+    this.accountUserService
+      .update(this.accountUser)
+      .pipe(
+        catchError(httpError => {
+          this.alertService.error(httpError.error.message)
+          throw httpError;
+        })
+      )
+      .subscribe(() => {
+          this.alertService.success("Usuário cadastrado com sucesso!")
+          form.resetForm();
+          this.userListService.findAll();
+        }
+      );
+  }
 }

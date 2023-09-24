@@ -13,26 +13,32 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatRippleModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
+import {FindUserComponent} from './find-user/find-user.component';
 
 
 @NgModule({
-    declarations: [HomeComponent, PersistUserComponent, ListUserComponent],
-    imports: [
-        CommonModule,
-        MatInputModule,
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        FlexModule,
-        MatTableModule,
-        MatTabsModule,
-        MatDialogModule,
-        MatRippleModule,
-        MatIconModule
-    ],
-    exports: [HomeComponent],
+  declarations: [
+    HomeComponent,
+    PersistUserComponent,
+    ListUserComponent,
+    FindUserComponent
+  ],
+  imports: [
+    CommonModule,
+    MatInputModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexModule,
+    MatTableModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatRippleModule,
+    MatIconModule
+  ],
+  exports: [HomeComponent],
 })
 export class HomeModule {
 }

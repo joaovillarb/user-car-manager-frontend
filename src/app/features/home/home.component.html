@@ -1,19 +1,20 @@
 <section class="container">
+  <section fxLayout="row" fxLayoutGap="30px">
 
-    <section fxLayout="row" fxLayoutGap="30px">
+    <button mat-raised-button
+            color="primary"
+            (click)="createNewUser()">
+      Novo
+    </button>
 
-        <button mat-raised-button color="primary"
-                (click)="openDialog()">
-            Novo
-        </button>
+    <button mat-raised-button
+            color="warn"
+            (click)="findById()">
+      Buscar
+    </button>
 
-        <button mat-raised-button color="warn"
-                (click)="openDialogFindById()">
-            Buscar
-        </button>
+  </section>
 
-    </section>
-
-    <app-list-users/>
+  <app-list-users/>
 
 </section>

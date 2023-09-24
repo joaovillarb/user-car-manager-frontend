@@ -6,57 +6,78 @@ import {catchError} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {PersistUserComponent} from "../persist-user/persist-user.component";
 import {Operation} from "../../../shared/model/operation";
+import {UserListService} from "../../../shared/service/user-list.service";
 
 @Component({
-    selector: 'app-list-users',
-    templateUrl: './list-user.component.html',
-    styleUrls: ['./list-user.component.css']
+  selector: 'app-list-users',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
 
-    public accountUserList: AccountUser[] = [];
+  accountUserList: AccountUser[] = [];
 
-    constructor(private accountUserService: AccountUserService,
-                private alertService: AlertService,
-                private dialog: MatDialog) {
+  constructor(private accountUserService: AccountUserService,
+              private alertService: AlertService,
+              private userListService: UserListService,
+              private matDialog: MatDialog) {
+  }
+
+  ngOnInit(): void {
+    this.userListService
+      .getUserList()
+      .subscribe(users => {
+        this.accountUserList = users;
+      });
+  }
+
+  public deleteUser(user: AccountUser): void {
+    if (!user.active) {
+      this.alertService.error("Usuário já está inativo!");
+      return;
     }
 
-    ngOnInit(): void {
-        this.findAll();
-    }
-    deleteUser(user: AccountUser): void {
-        console.log(`Excluindo usuário: ${user.firstName} ${user.lastName}`);
+    this.accountUserService
+      .remove(user.id!)
+      .pipe(catchError(httpError => {
+        this.alertService.error(httpError.error.message);
+        throw httpError;
+      }))
+      .subscribe(() => {
+        this.alertService.success("Usuário inativado com sucesso!");
+        user.active = false;
+      });
+  }
+
+  public editUser(user: AccountUser): void {
+    this.matDialog
+      .open(PersistUserComponent, {
+        data: {
+          accountUser: user,
+          operation: Operation.Update
+        }
+      });
+  }
+
+  public reactivateUser(user: AccountUser): void {
+    if (user.active) {
+      this.alertService.error("Usuário já está ativo!");
+      return;
     }
 
-    editUser(user: AccountUser): void {
-        const dialogRef = this.dialog.open(PersistUserComponent, {
-            data: {
-                accountUser: user,
-                operation: Operation.Update
-            }
-        });
+    user.active = true;
+    this.accountUserService
+      .patch(user)
+      .pipe(catchError(httpError => {
+        this.alertService.error(httpError.error.message);
+        throw httpError;
+      }))
+      .subscribe(() => {
+        this.alertService.success("Usuário reativado com sucesso!");
+      });
+  }
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
-        console.log(`Editando usuário: ${user.firstName} ${user.lastName}`);
-    }
-
-    refreshUsers() {
-        this.findAll();
-    }
-
-    private findAll() {
-        this.accountUserService.findAll()
-            .pipe(
-                catchError(httpError => {
-                        this.alertService.error(httpError.error.message);
-                        throw httpError;
-                    }
-                ))
-            .subscribe(data => {
-                    this.accountUserList = data;
-                }
-            );
-    }
+  public refreshUsers() {
+    this.userListService.findAll();
+  }
 }

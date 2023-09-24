@@ -1,73 +1,92 @@
 <section class="reload-button">
-    <button mat-button (click)="refreshUsers()">
-        <mat-icon>refresh</mat-icon>
-    </button>
+  <button mat-button (click)="refreshUsers()">
+    <mat-icon>refresh</mat-icon>
+  </button>
 </section>
 
 <mat-table [dataSource]="accountUserList" class="mat-elevation-z8 user-list">
 
-    <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef>Primeiro Nome</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="userId">
+    <mat-header-cell *matHeaderCellDef class="userId-column">Id</mat-header-cell>
+    <mat-cell *matCellDef="let user" class="userId-column">{{ user.id }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef>Último Nome</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef>Primeiro Nome</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef>Último Nome</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="birthday">
-        <mat-header-cell *matHeaderCellDef>Data de Nascimento</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.birthday }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="login">
-        <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.login }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="birthday">
+    <mat-header-cell *matHeaderCellDef>Data de Nascimento</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.birthday }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.phone }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="login">
+    <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.login }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{ user.active }}</mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.phone }}</mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="cars">
-        <mat-header-cell *matHeaderCellDef>Carros</mat-header-cell>
-        <mat-cell *matCellDef="let user">
-            <span *ngFor="let car of user.cars">{{ car.model }} ({{ car.year }})</span>
-        </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef class="status-column">Status</mat-header-cell>
+    <mat-cell  class="status-column" *matCellDef="let user" [ngClass]="user.active ? 'active-user' : 'inactive-user'">
+      {{ user.active === true ? 'ativo' : 'inativo' }}
+    </mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
-        <mat-cell *matCellDef="let user">
-            <button mat-icon-button color="primary" (click)="editUser(user)">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="deleteUser(user)">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="cars">
+    <mat-header-cell *matHeaderCellDef>Carros</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      <span *ngFor="let car of user.cars">{{ car.model }} ({{ car.year }})</span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      <button mat-icon-button color="primary" (click)="editUser(user)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteUser(user)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button (click)="reactivateUser(user)">
+        <mat-icon color="primary">restore</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
 
 
-    <mat-header-row
-            *matHeaderRowDef="['firstName', 'lastName', 'email', 'birthday', 'login', 'phone', 'status', 'cars', 'actions']; sticky: true"
-    />
+  <mat-header-row
+    *matHeaderRowDef="[
+    'userId', 'firstName', 'lastName',
+    'email', 'birthday', 'login', 'phone',
+    'status', 'cars', 'actions'
+  ]; sticky: true"
+  />
 
-    <mat-row
-            matRipple
-            *matRowDef="let user; columns: ['firstName', 'lastName', 'email', 'birthday', 'login', 'phone','status', 'cars', 'actions']"
-    />
+  <mat-row
+    matRipple
+    *matRowDef="let user; columns: [
+    'userId', 'firstName', 'lastName',
+    'email', 'birthday', 'login', 'phone',
+    'status', 'cars', 'actions'
+  ]"
+  />
+
 
 </mat-table>

@@ -3,30 +3,28 @@ import {MatDialog} from "@angular/material/dialog";
 import {PersistUserComponent} from "./persist-user/persist-user.component";
 import {Operation} from "../../shared/model/operation";
 import {emptyAccountUser} from "../../shared/model/account-user";
+import {FindUserComponent} from "./find-user/find-user.component";
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    constructor(public dialog: MatDialog) {
-    }
 
-    openDialog() {
-        const dialogRef = this.dialog.open(PersistUserComponent, {
-            data: {
-                accountUser: emptyAccountUser(),
-                operation: Operation.Create
-            }
-        });
+  constructor(public matDialog: MatDialog) {
+  }
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
-    }
+  createNewUser() {
+    this.matDialog.open(PersistUserComponent, {
+      data: {
+        accountUser: emptyAccountUser(),
+        operation: Operation.Create
+      }
+    });
+  }
 
-    openDialogFindById() {
-//todo: implementar
-    }
+  findById() {
+    this.matDialog.open(FindUserComponent);
+  }
 }
