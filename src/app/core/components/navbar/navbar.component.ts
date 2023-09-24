@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {TokenService} from "../../service/token.service";
 
 @Component({
     selector: 'app-navbar',
@@ -7,9 +8,14 @@ import {Component} from '@angular/core';
 })
 export class NavbarComponent {
 
-    public isAuthenticated = false;
+    constructor(private tokenService: TokenService) {
+    }
+
+    public isAuthenticated(): boolean {
+        return this.tokenService.isAuthenticated()
+    }
 
     public logout(): void {
-        // todo
+        this.tokenService.removeToken()
     }
 }
