@@ -3,13 +3,13 @@
 <mat-dialog-content>
 
   <mat-form-field appearance="fill" class="login-input">
-    <mat-label>Id Usuário</mat-label>
-    <input matInput [(ngModel)]="userId" name="userId">
+    <mat-label>Id Carro</mat-label>
+    <input matInput [(ngModel)]="carId" name="carId">
   </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="warn" type="button" (click)="findUser()">Buscar</button>
+  <button mat-raised-button color="warn" type="button" (click)="find()">Buscar</button>
 </mat-dialog-actions>

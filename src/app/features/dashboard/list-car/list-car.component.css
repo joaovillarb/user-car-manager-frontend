@@ -1,0 +1,28 @@
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.reload-button {
+  text-align: right;
+}
+
+.active-car {
+  font-weight: bold;
+  background-color: green;
+  color: white;
+}
+
+.inactive-car {
+  font-weight: bold;
+  background-color: red;
+  color: white;
+}
+
+.carId-column {
+  flex: 0 0 20px;
+}

@@ -1,15 +1,19 @@
 export interface Car {
-    year: number | null;
-    licensePlate: string;
-    model: string;
-    color: string;
-    active: boolean | null;
+  id: number | null;
+  year: number | null;
+  licensePlate: string;
+  model: string;
+  color: string;
+  usageCount: number | null;
+  active: boolean | null;
 }
 
 export const emptyCar: () => Car = () => ({
-    year: null,
-    licensePlate: '',
-    model: '',
-    color: '',
-    active: null
+  id: null,
+  year: null,
+  licensePlate: '',
+  model: '',
+  color: '',
+  usageCount: null,
+  active: null
 });
