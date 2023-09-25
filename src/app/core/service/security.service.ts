@@ -4,13 +4,14 @@ import {AuthenticationRequest} from "../../shared/model/authentication-request";
 import {Observable} from "rxjs";
 import {AuthenticationResponse} from "../../shared/model/authentication-response";
 import {AccountUser} from "../../shared/model/account-user";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SecurityService {
-
-  private readonly baseUrl = 'http://localhost:8080/api';
+  
+  private readonly baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
   }
