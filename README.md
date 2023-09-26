@@ -1,27 +1,72 @@
-# UserCarManagerFrontend
+# User Car Manager - Estrutura do Projeto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+## Visão Geral
 
-## Development server
+O projeto **User Car Manager** é uma API RESTful desenvolvido para empresa Pitang com o objetivo de gerenciar informações
+de usuários e seus carros.
+O projeto segue a arquitetura Clean Architecture, proporcionando uma organização modular e escalável.
+A estrutura do projeto é dividida em três principais pacotes:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Core: O diretório Core contem os componentes basicos da aplicação, interceptors, services e guard routes.
+2. Features: No diretório Features, estão as principais features da aplicação, como as telas home, dashboard, login e suas devidas regras.
+3. Shared: O diretório Shared contém componentes, serviços e outros recursos compartilhados entre os módulos da aplicação.
 
-## Code scaffolding
+## Instalação e Execução
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para executar o projeto, siga os seguintes passos:
 
-## Build
+1. Clone o repositório:
+   `git clone https://github.com/joaovillarb/user-car-manager-frontend.git`
+2. Navegue até a pasta do projeto baixado.
+3. Execute o comando para instalar as dependências:
+   `npm install`
+4. Execute o projeto com o Angular CLI (certifique-se de tê-lo instalado) ou com npm:
+  - Usando Angular CLI:
+    `ng serve`
+  - Usando npm:
+    `npm start`
+5. O projeto estará disponível em: http://localhost:4200
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Board do Projeto
 
-## Running unit tests
+[https://github.com/users/joaovillarb/projects/4](Link para o board do projeto no github).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Estórias de Usuário
 
-## Running end-to-end tests
+Aqui estão as URLs do GitHub contendo as estórias de usuário do projeto:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. [https://github.com/joaovillarb/user-car-manager-frontend/issues/13](Tela about me)
+2. [https://github.com/joaovillarb/user-car-manager-frontend/issues/9](Tela Home)
+3. [https://github.com/joaovillarb/user-car-manager-frontend/issues/7](Manipulação do localstorage)
+4. [https://github.com/joaovillarb/user-car-manager-frontend/issues/5](Configuração da guarda de rotas)
+5. [https://github.com/joaovillarb/user-car-manager-frontend/issues/3](Dashboard)
+6. [https://github.com/joaovillarb/user-car-manager-frontend/issues/2](Tela de usuário)
+7. [https://github.com/joaovillarb/user-car-manager-frontend/issues/1](Tela de login)
 
-## Further help
+## Solução
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+O projeto foi desenvolvido em Angular na versão 16 devido à sua capacidade de criar interfaces de usuário interativas e escaláveis.
+A arquitetura Clean Architecture foi escolhida para manter o código bem organizado, facilitando a manutenção e a escalabilidade.
+
+## Sugestões para futuras melhorias:
+
+- Implementação de testes unitários para garantir a qualidade do código.
+- Integração contínua e entrega contínua (CI/CD) usando Jenkins ou outras ferramentas para automatizar o processo de construção e implantação.
+- Melhorias na infraestrutura, como hospedagem em contêineres para maior escalabilidade.
+- Criação de mais validações dos campos
+
+## Pipeline e Sonar
+
+- Jenkins: http://54.157.30.248:8080
+- Sonar: http://54.173.146.101:9000/projects
+
+**Observação**: Este projeto atualmente não possui integração com CI/CD.
+
+## Infraestrutura
+
+O projeto está hospedado na **Amazon S3** para garantir alta disponibilidade e escalabilidade.
+
+## Url do projeto em produção:
+
+[http://user-car-manager-frontend.s3-website.us-east-2.amazonaws.com](Frontend User Car Manager)
+
