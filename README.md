@@ -30,19 +30,19 @@ Para executar o projeto, siga os seguintes passos:
 
 ## Board do Projeto
 
-[https://github.com/users/joaovillarb/projects/4](Link para o board do projeto no github).
+[Link para o board do projeto no github](https://github.com/users/joaovillarb/projects/4).
 
 ## Estórias de Usuário
 
 Aqui estão as URLs do GitHub contendo as estórias de usuário do projeto:
 
-1. [https://github.com/joaovillarb/user-car-manager-frontend/issues/13](Tela about me)
-2. [https://github.com/joaovillarb/user-car-manager-frontend/issues/9](Tela Home)
-3. [https://github.com/joaovillarb/user-car-manager-frontend/issues/7](Manipulação do localstorage)
-4. [https://github.com/joaovillarb/user-car-manager-frontend/issues/5](Configuração da guarda de rotas)
-5. [https://github.com/joaovillarb/user-car-manager-frontend/issues/3](Dashboard)
-6. [https://github.com/joaovillarb/user-car-manager-frontend/issues/2](Tela de usuário)
-7. [https://github.com/joaovillarb/user-car-manager-frontend/issues/1](Tela de login)
+1. [Tela about me](https://github.com/joaovillarb/user-car-manager-frontend/issues/13)
+2. [Tela Home](https://github.com/joaovillarb/user-car-manager-frontend/issues/9)
+2. [Manipulação do localstorage](https://github.com/joaovillarb/user-car-manager-frontend/issues/7)
+3. [Configuração da guarda de rotas](https://github.com/joaovillarb/user-car-manager-frontend/issues/5)
+4. [Dashboard](https://github.com/joaovillarb/user-car-manager-frontend/issues/3)
+5. [Tela de usuário](https://github.com/joaovillarb/user-car-manager-frontend/issues/2)
+6. [Tela de login](https://github.com/joaovillarb/user-car-manager-frontend/issues/1)
 
 ## Solução
 
@@ -71,5 +71,5 @@ A arquitetura Clean Architecture foi escolhida para manter o código bem organiz
 
 ## Url do projeto em produção:
 
-[http://user-car-manager-frontend.s3-website.us-east-2.amazonaws.com](Frontend User Car Manager)
+[Frontend User Car Manager](http://user-car-manager-frontend.s3-website.us-east-2.amazonaws.com)
 
