@@ -3,8 +3,7 @@
 ## Visão Geral
 
 O projeto **User Car Manager** é uma API RESTful desenvolvido para empresa Pitang com o objetivo de gerenciar informações
-de usuários e seus carros.
-O projeto segue a arquitetura Clean Architecture, proporcionando uma organização modular e escalável.
+de usuários e seus carros. O projeto segue a arquitetura Clean Architecture, proporcionando uma organização modular e escalável.
 A estrutura do projeto é dividida em três principais pacotes:
 
 1. Core: O diretório Core contem os componentes basicos da aplicação, interceptors, services e guard routes.
@@ -21,10 +20,12 @@ Para executar o projeto, siga os seguintes passos:
 3. Execute o comando para instalar as dependências:
    `npm install`
 4. Execute o projeto com o Angular CLI (certifique-se de tê-lo instalado) ou com npm:
-  - Usando Angular CLI:
-    `ng serve`
-  - Usando npm:
-    `npm start`
+
+- Usando Angular CLI:
+  `ng serve`
+- Usando npm:
+  `npm start`
+
 5. O projeto estará disponível em: http://localhost:4200
 
 ## Board do Projeto
@@ -57,14 +58,16 @@ A arquitetura Clean Architecture foi escolhida para manter o código bem organiz
 
 ## Pipeline e Sonar
 
-- Jenkins: http://54.157.30.248:8080
-- Sonar: http://54.173.146.101:9000/projects
+- Jenkins: http://54.157.30.248:8080 (Usuário: user, Senha: user)
+- Sonar: http://54.173.146.101:9000 (Usuário: user, Senha: user)
 
 **Observação**: Este projeto atualmente não possui integração com CI/CD.
 
 ## Infraestrutura
 
-O projeto está hospedado na **Amazon S3** para garantir alta disponibilidade e escalabilidade.
+- Jenkins hospedado na AWS Lightsail.
+- Sonar hospedado na AWS Lightsail.
+- Frontend hospedado na **Amazon S3**.
 
 ## Url do projeto em produção:
 
